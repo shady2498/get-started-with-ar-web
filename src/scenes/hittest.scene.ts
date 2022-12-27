@@ -1,6 +1,6 @@
-import { createPlaneMarker } from "./objects/PlaneMarker";
+import { createPlaneMarker } from "../objects/PlaneMarker";
 import { GLTF, GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
-import { handleXRHitTest } from "./utils/hitTest";
+import { handleXRHitTest } from "../utils/hitTest";
 
 import {
   AmbientLight,
@@ -16,7 +16,7 @@ import {
   XRFrame,
 } from "three";
 
-export function createScene(renderer: WebGLRenderer) {
+export function createHitTestScene(renderer: WebGLRenderer) {
   // TODO: Create a scene and build a WebXR app!
   const scene = new Scene();
 
