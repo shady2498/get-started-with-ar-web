@@ -11,7 +11,22 @@ import {
 import "./styles.css";
 
 function initializeXRApp() {
-  // we are getting the device pixel ratio, the inner height and inner width too
+  // Display a welcome message to the user.
+  displayIntroductionMessage();
+}
+
+async function start() {
+  // TODO: Check for WebXR AR support, and start the app if WebXR is supported.
+
+  // Check if browser supports WebXR with "immersive-ar".
+  const immersiveArSupported = await browserHasImmersiveArCompatibility();
+
+  // Initialize app if supported.
+  immersiveArSupported ? initializeXRApp() : displayUnsupportedBrowserMessage();
+}
+
+export async function displaySimpleShapes() {
+  console.log("this is simple shapes");
   const { devicePixelRatio, innerHeight, innerWidth } = window;
 
   // Create a new WebGL renderer and set the size + pixel ratio.
@@ -33,19 +48,33 @@ function initializeXRApp() {
 
   // Pass the renderer to the createScene-funtion.
   createDiffShapeScene(renderer);
-
-  // Display a welcome message to the user.
-  displayIntroductionMessage();
 }
 
-async function start() {
-  // TODO: Check for WebXR AR support, and start the app if WebXR is supported.
+export function display3DModels() {
+  console.log("this is 3D Models shapes", ARButton);
 
-  // Check if browser supports WebXR with "immersive-ar".
-  const immersiveArSupported = await browserHasImmersiveArCompatibility();
+  console.log("this is simple shapes");
+  const { devicePixelRatio, innerHeight, innerWidth } = window;
 
-  // Initialize app if supported.
-  immersiveArSupported ? initializeXRApp() : displayUnsupportedBrowserMessage();
+  // Create a new WebGL renderer and set the size + pixel ratio.
+  const renderer = new WebGLRenderer({ antialias: true, alpha: true });
+  renderer.setSize(innerWidth, innerHeight);
+  renderer.setPixelRatio(devicePixelRatio);
+
+  // Enable XR functionality on the renderer.
+  //because by default it is turned off
+  renderer.xr.enabled = true;
+
+  // Add it to the DOM. -- renderer being added to the dom
+  document.body.appendChild(renderer.domElement);
+
+  // Create the AR button element, configure our XR session, and append it to the DOM.
+  document.body.appendChild(
+    ARButton.createButton(renderer, { requiredFeatures: ["hit-test"] })
+  );
+
+  // Pass the renderer to the createScene-funtion.
+  createHitTestScene(renderer);
 }
 
 start();

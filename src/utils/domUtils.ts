@@ -2,6 +2,10 @@
  * Returns true if navigator has xr with 'immersive-ar' capabilities
  * Returns false otherwise.
  */
+
+import { display3DModels } from "..";
+import { displaySimpleShapes } from "..";
+
 export async function browserHasImmersiveArCompatibility(): Promise<boolean> {
   if (window.navigator.xr) {
     const isSupported: boolean = await navigator.xr.isSessionSupported(
@@ -67,6 +71,19 @@ export function displayIntroductionMessage() {
   helpMessage.innerText =
     "Note: The app works best in a well lit environment, with enough space to move around.";
 
+  const simple_shapes: HTMLButtonElement = <HTMLButtonElement>(
+    document.createElement("button")
+  );
+  simple_shapes.addEventListener("click", (e) => displaySimpleShapes());
+  simple_shapes.innerText = "Press this to View simple shapes";
+
+  const new_line: HTMLBRElement = <HTMLBRElement>document.createElement("br");
+  const display_models: HTMLButtonElement = <HTMLButtonElement>(
+    document.createElement("button")
+  );
+  display_models.addEventListener("click", (e) => display3DModels());
+  display_models.innerText = "Press this to View Model";
+
   helpMessage.style.fontSize = "16px";
   helpMessage.style.fontWeight = "bold";
   helpMessage.style.padding = "64px 64px 0px 64px";
@@ -76,6 +93,10 @@ export function displayIntroductionMessage() {
     appRoot.appendChild(bigMessage);
     appRoot.appendChild(middleMessage);
     appRoot.appendChild(helpMessage);
+    appRoot.appendChild(simple_shapes);
+    appRoot.appendChild(new_line);
+
+    appRoot.appendChild(display_models);
   }
 
   return () => {
