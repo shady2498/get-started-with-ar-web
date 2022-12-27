@@ -18,6 +18,7 @@ To get up and running, clone the repo and run the following commands to install 
 This will install the app dependencies, start an instance of webpack-dev-server and expose the local web server to the internet using. The localtunnel URL will be printed to your terminal.
 
 ![Simple Shapes](./assets/gifs/simple%20shapes.gif)
+
 ![Model](./assets/gifs/3d%20model.gif)
 
 ## A note on debugging
