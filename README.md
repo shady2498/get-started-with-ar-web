@@ -1,14 +1,13 @@
-# get-started-with-ar-on-the-web
+# Get Started with WEBAR on Web
 
-Welcome! 👋
 
 ## About this repository
 
-This is the project repository for the Medium post ["Get started with Augmented Reality on the web using WebXR and Three.js"](https://medium.com/sopra-steria-norge/get-started-with-augmented-reality-on-the-web-using-three-js-and-webxr-part-1-8b07757fc23a).
+This App shows different shapes and models in the AR mode. 
 
-The `main` branch contains the project starter code, which is intended for use together with the written guide in the post.
+To run this application you need to have a mobile or tablet device that supports AR
 
-The `complete` branch contains the full completed project code, with some added comments to explain key points.
+This App is deployed at https://getting-started-webar.netlify.app/
 
 ## Running the app
 
@@ -26,3 +25,7 @@ As the app is running on a mobile device, you won't be able to easily access the
 ## Credits
 
 Thanks to [*Poly by Google*](https://poly.pizza/m/fzCu8FM0HfB) for the Koala model.
+
+Thanks to [*Sopra Steria Norge*](https://github.com/sopra-steria-norge) for the boiler plate code
+
+Note: This repository is forked from https://github.com/sopra-steria-norge/get-started-with-ar-web
